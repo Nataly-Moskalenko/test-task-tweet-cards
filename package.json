@@ -1,5 +1,6 @@
 {
   "name": "test-task-tweet-cards",
+  "homepage": "https://nataly-moskalenko.github.io/test-task-tweet-cards/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
