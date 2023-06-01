@@ -33,6 +33,7 @@ export default function TweetCard({ card }) {
       <p className={css.cardTweets}>{Number(card.tweets).toLocaleString('en')} Tweets</p>
       <p className={css.cardFollowers}>{Number(followers).toLocaleString('en')} Followers</p>
       <button
+        type="button"
         onClick={handleFollow}
         className={buttonText === 'Follow' ? css.cardButtonFollow : css.cardButtonFollowing}
       >
