@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunktest_task_tweet_cards=self.webpackChunktest_task_tweet_cards||[]).push([[680],{703:function(c,t,e){e(791);t.Z=e.p+"static/media/logo.e917114d7945c04c85a8946a331d28b6.svg"},888:function(c,t,e){e(791);t.Z=e.p+"static/media/picture.23dcbc3cc8ccc9682f24b4acffb5efb2.svg"}}]);
+//# sourceMappingURL=680.291578cb.chunk.js.map

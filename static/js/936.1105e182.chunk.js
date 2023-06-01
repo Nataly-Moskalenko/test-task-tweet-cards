@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunktest_task_tweet_cards=self.webpackChunktest_task_tweet_cards||[]).push([[936],{936:function(e,t,s){s.r(t),s.d(t,{default:function(){return i}});var a=s(703),c=s(888),r={home:"Home_home__pTzl1"},n=s(184);function i(){return(0,n.jsxs)("div",{className:r.home,children:[(0,n.jsx)("img",{src:a.Z,alt:"logo GoIT"}),(0,n.jsx)("img",{src:c.Z,alt:"backgroung_image",width:600,height:320})]})}}}]);
+//# sourceMappingURL=936.1105e182.chunk.js.map
