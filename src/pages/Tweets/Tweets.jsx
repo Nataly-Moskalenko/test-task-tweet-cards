@@ -2,6 +2,7 @@ import TweetCard from '../../components/TweetCard/TweetCard';
 import { useEffect, useState } from 'react';
 import apiService from '../../services/apiService';
 import css from './Tweets.module.css';
+import { NavLink } from 'react-router-dom';
 
 export default function Tweets() {
   const [users, setUsers] = useState([]);
@@ -20,9 +21,12 @@ export default function Tweets() {
   }, []);
 
   return (
-    <div>
-      <h1>Tweets</h1>
-      <button>Back</button>
+    <div className={css.tweetsWrapper}>
+      <button className={css.buttonBack}>
+        <NavLink className={css.buttonLink} to="/">
+          Back
+        </NavLink>
+      </button>
       <ul className={css.cards}>
         {users.map((card) => (
           <li key={card.id}>
@@ -30,7 +34,7 @@ export default function Tweets() {
           </li>
         ))}
       </ul>
-      <button>Load more</button>
+      <button className={css.buttonLoadmore}>Load more</button>
     </div>
   );
 }

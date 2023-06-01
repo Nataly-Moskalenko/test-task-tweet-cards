@@ -30,8 +30,8 @@ export default function TweetCard({ card }) {
       <div className={css.cardLine}></div>
       <img src={logo} alt="logo GoIT" className={css.cardLogo} />
       <img src={picture} alt="backgroung_image" className={css.cardPicture} />
-      <p className={css.cardTweets}>{card.tweets} Tweets</p>
-      <p className={css.cardFollowers}>{followers} Followers</p>
+      <p className={css.cardTweets}>{Number(card.tweets).toLocaleString('en')} Tweets</p>
+      <p className={css.cardFollowers}>{Number(followers).toLocaleString('en')} Followers</p>
       <button
         onClick={handleFollow}
         className={buttonText === 'Follow' ? css.cardButtonFollow : css.cardButtonFollowing}

@@ -1,13 +1,13 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
-// import css from './Layout.module.css';
+import css from './Layout.module.css';
 
 export default function Layout() {
   return (
     <div>
-      <nav>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/tweets">Tweets</NavLink>
+      <nav className={css.nav}>
+        <NavLink className={navData => (navData.isActive ? css.active : css.link)} to="/">Home</NavLink>
+        <NavLink className={navData => (navData.isActive ? css.active : css.link)} to="/tweets">Tweets</NavLink>
       </nav>
       <main>
         <Suspense fallback={<div>Loading...</div>}>
