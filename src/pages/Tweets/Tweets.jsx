@@ -8,10 +8,10 @@ export default function Tweets() {
   const [users, setUsers] = useState([]);
   const [visible, setVisible] = useState(3);
   const [error, setError] = useState(null);
-  const following = JSON.parse(localStorage.getItem('following')) || [];
+  // const following = JSON.parse(localStorage.getItem('following')) || [];
   const [visibilityUsers, setVisibilityUsers] = useState([]);
 
-  const idFollowing = (id) => following.includes(id);
+  // const idFollowing = (id) => following.includes(id);
 
   const showMoreItems = () => {
     setVisible((prevValue) => prevValue + 3);
@@ -22,10 +22,14 @@ export default function Tweets() {
   };
 
   const showFollow = () => {
+    const following = JSON.parse(localStorage.getItem('following')) || [];  
+    const idFollowing = (id) => following.includes(id);
     setVisibilityUsers(users.filter((item) => !idFollowing(item.id)));
   };
 
   const showFollowing = () => {
+    const following = JSON.parse(localStorage.getItem('following')) || [];  
+    const idFollowing = (id) => following.includes(id);
     setVisibilityUsers(users.filter((item) => idFollowing(item.id)));
   };
 
@@ -42,7 +46,7 @@ export default function Tweets() {
     }
 
     fetchUsers();
-  }, []);
+  }, []);  
 
   return (
     <div className={css.tweetsWrapper}>
@@ -68,14 +72,11 @@ export default function Tweets() {
       <ul className={css.cards}>
         {visibilityUsers?.slice(0, visible).map((card) => (
           <li key={card.id}>
-            <TweetCard
-              card={card}
-              // onClick={onClick}
-            />
+            <TweetCard card={card} />
           </li>
         ))}
       </ul>
-      {visible < users.length && visibilityUsers.length > 0 && (
+      {visible < visibilityUsers.length && visibilityUsers.length > 0 && (
         <button className={css.buttonLoadmore} type="button" onClick={showMoreItems}>
           Load more
         </button>

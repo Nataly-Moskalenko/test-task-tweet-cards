@@ -4,25 +4,31 @@ import logo from '../../images/logo.svg';
 import picture from '../../images/picture.svg';
 
 export default function TweetCard({ card }) {
-  const [followers, setFollowers] = useState(card.followers);
-  const [buttonText, setButtonText] = useState('Follow');
+  const following = JSON.parse(localStorage.getItem('following')) || [];
+
+  const [buttonText, setButtonText] = useState(
+    following.includes(card.id) ? 'Following' : 'Follow'
+  );
+  const [followers, setFollowers] = useState(
+    following.includes(card.id) ? card.followers + 1 : card.followers
+  );
 
   const handleFollow = () => {
     const allFollowing = JSON.parse(localStorage.getItem('following')) || [];
     if (buttonText === 'Follow') {
       setFollowers(followers + 1);
-      setButtonText('Following');      
-      // const allFollowing = JSON.parse(localStorage.getItem('following')) || [];
+      setButtonText('Following');
       allFollowing.push(card.id);
+      // setFollowing(allFollowing);
       window.localStorage.setItem('following', JSON.stringify(allFollowing));
+      // window.localStorage.setItem('following', JSON.stringify(allFollowing));
     }
     if (buttonText === 'Following') {
       setFollowers(followers - 1);
       setButtonText('Follow');
-      // const allFollowing = JSON.parse(localStorage.getItem('following')) || [];
-      // const newFollowing = allFollowing.filter(item => item.id !== card.id);
-      const newFollowing = allFollowing.filter(id => id !== card.id);       
-      window.localStorage.setItem('following', JSON.stringify(newFollowing));
+      const removedFollowing = allFollowing.filter((id) => id !== card.id);
+      // setFollowing(removedFollowing);
+      window.localStorage.setItem('following', JSON.stringify(removedFollowing));
     }
   };
 
