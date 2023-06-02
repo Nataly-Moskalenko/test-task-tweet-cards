@@ -8,13 +8,21 @@ export default function TweetCard({ card }) {
   const [buttonText, setButtonText] = useState('Follow');
 
   const handleFollow = () => {
+    const allFollowing = JSON.parse(localStorage.getItem('following')) || [];
     if (buttonText === 'Follow') {
       setFollowers(followers + 1);
-      setButtonText('Following');
+      setButtonText('Following');      
+      // const allFollowing = JSON.parse(localStorage.getItem('following')) || [];
+      allFollowing.push(card.id);
+      window.localStorage.setItem('following', JSON.stringify(allFollowing));
     }
     if (buttonText === 'Following') {
       setFollowers(followers - 1);
       setButtonText('Follow');
+      // const allFollowing = JSON.parse(localStorage.getItem('following')) || [];
+      // const newFollowing = allFollowing.filter(item => item.id !== card.id);
+      const newFollowing = allFollowing.filter(id => id !== card.id);       
+      window.localStorage.setItem('following', JSON.stringify(newFollowing));
     }
   };
 

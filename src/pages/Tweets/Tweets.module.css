@@ -1,23 +1,28 @@
-/* .tweetsWrapper {
-  padding: 20px;
-} */
+.tweetsMenu {
+  display: flex;
+  margin: 30px 160px;
+  justify-content: space-between;
+}
+
+.dropdawn {
+  display: flex;
+  gap: 12px;
+}
 
 .cards {
   display: flex;
   flex-wrap: wrap;
   gap: 48px;
-  list-style: none;
-  padding: 0;
   justify-content: center;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
-.buttonBack {
+.buttonBack,
+.buttonDropdawn {
   display: block;
-  width: 196px;
+  width: 176px;
   height: 50px;
-  margin: 40px 160px;
-  font-family: 'Montserrat'; 
+  font-family: 'Montserrat';
   font-weight: 600;
   font-size: 18px;
   line-height: 22px;
@@ -29,22 +34,23 @@
   cursor: pointer;
 }
 
+.buttonBack:active,
+.buttonDropdawn:active,
+.buttonDropdawn:focus {
+  color: #373737;
+  background-color: #5cd3a8;
+}
+
 .buttonLink {
-  text-decoration: none;  
-  /* font-family: 'Montserrat'; 
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 22px;
-  text-transform: uppercase;
-  color: #373737; */
+  text-decoration: none;
 }
 
 .buttonLoadmore {
   display: block;
-  margin: 40px auto;
+  margin: 30px auto;
   width: 196px;
   height: 50px;
-  font-family: 'Montserrat'; 
+  font-family: 'Montserrat';
   font-weight: 600;
   font-size: 18px;
   line-height: 22px;
