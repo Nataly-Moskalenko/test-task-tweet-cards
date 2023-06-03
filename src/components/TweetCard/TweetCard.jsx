@@ -19,15 +19,12 @@ export default function TweetCard({ card }) {
       setFollowers(followers + 1);
       setButtonText('Following');
       allFollowing.push(card.id);
-      // setFollowing(allFollowing);
       window.localStorage.setItem('following', JSON.stringify(allFollowing));
-      // window.localStorage.setItem('following', JSON.stringify(allFollowing));
     }
     if (buttonText === 'Following') {
       setFollowers(followers - 1);
       setButtonText('Follow');
       const removedFollowing = allFollowing.filter((id) => id !== card.id);
-      // setFollowing(removedFollowing);
       window.localStorage.setItem('following', JSON.stringify(removedFollowing));
     }
   };

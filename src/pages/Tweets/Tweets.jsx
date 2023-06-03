@@ -2,16 +2,14 @@ import TweetCard from '../../components/TweetCard/TweetCard';
 import { useEffect, useState } from 'react';
 import apiService from '../../services/apiService';
 import css from './Tweets.module.css';
-import { NavLink, Navigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { HiArrowLeft } from 'react-icons/hi';
 
 export default function Tweets() {
   const [users, setUsers] = useState([]);
   const [visible, setVisible] = useState(3);
-  const [error, setError] = useState(null);
-  // const following = JSON.parse(localStorage.getItem('following')) || [];
+  const [error, setError] = useState(null);  
   const [visibilityUsers, setVisibilityUsers] = useState([]);
-
-  // const idFollowing = (id) => following.includes(id);
 
   const showMoreItems = () => {
     setVisible((prevValue) => prevValue + 3);
@@ -22,15 +20,15 @@ export default function Tweets() {
   };
 
   const showFollow = () => {
-    const following = JSON.parse(localStorage.getItem('following')) || [];  
+    const following = JSON.parse(localStorage.getItem('following')) || [];
     const idFollowing = (id) => following.includes(id);
-    setVisibilityUsers(users.filter((item) => !idFollowing(item.id)));
+    setVisibilityUsers(users.filter((item) => !idFollowing(item.id)));    
   };
 
   const showFollowing = () => {
-    const following = JSON.parse(localStorage.getItem('following')) || [];  
+    const following = JSON.parse(localStorage.getItem('following')) || [];
     const idFollowing = (id) => following.includes(id);
-    setVisibilityUsers(users.filter((item) => idFollowing(item.id)));
+    setVisibilityUsers(users.filter((item) => idFollowing(item.id)));   
   };
 
   useEffect(() => {
@@ -46,28 +44,31 @@ export default function Tweets() {
     }
 
     fetchUsers();
-  }, []);  
+  }, []);
 
   return (
     <div className={css.tweetsWrapper}>
-      <div className={css.tweetsMenu}>
-        <button className={css.buttonBack} type="button">
-          <NavLink className={css.buttonLink} to="/">
-            Back
-          </NavLink>
-        </button>
-        <ul className={css.dropdawn}>
-          <button className={css.buttonDropdawn} type="button" onClick={showAll}>
-            All
+      {!error && (
+        <div className={css.tweetsMenu}>
+          <button className={css.buttonBack} type="button">
+            <NavLink className={(navData) => (navData.isActive ? css.active : css.link)} to="/">
+              <HiArrowLeft size="24" />
+              <span className={css.buttonSpan}>Back</span>
+            </NavLink>
           </button>
-          <button className={css.buttonDropdawn} type="button" onClick={showFollow}>
-            Follow
-          </button>
-          <button className={css.buttonDropdawn} type="button" onClick={showFollowing}>
-            Following
-          </button>
-        </ul>
-      </div>
+          <ul className={css.dropdown}>
+            <button className={css.buttonDropdown} type="button" autoFocus onClick={showAll}>
+              All
+            </button>
+            <button className={css.buttonDropdown} type="button" onClick={showFollow}>
+              Follow
+            </button>
+            <button className={css.buttonDropdown} type="button" onClick={showFollowing}>
+              Following
+            </button>
+          </ul>
+        </div>
+      )}
 
       <ul className={css.cards}>
         {visibilityUsers?.slice(0, visible).map((card) => (
@@ -81,7 +82,12 @@ export default function Tweets() {
           Load more
         </button>
       )}
-      {error && <Navigate to="/" />}
+      {error && (
+        <div className={css.error}>
+          <p>Ooops, something went wrong: {error.message}.</p>
+          <p>Please try again.</p>
+        </div>
+      )}      
     </div>
   );
 }

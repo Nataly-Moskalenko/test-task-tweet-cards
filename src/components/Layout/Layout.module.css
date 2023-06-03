@@ -27,3 +27,31 @@
   text-transform: uppercase;
   color: #373737;
 }
+
+.loader {
+  margin: 120px auto;
+  text-align: center;
+}
+.loaderSpan {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  text-transform: uppercase;
+  color: #373737;
+}
+
+.loaderIcon {
+  /* margin-top: 2px; */
+  animation: spin 2s infinite linear;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
+}
