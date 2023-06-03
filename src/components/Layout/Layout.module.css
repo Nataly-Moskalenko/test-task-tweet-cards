@@ -9,8 +9,8 @@
 }
 
 .active {
-  font-weight: 600;
-  color: #28048d;
+  font-weight: 700;
+  color: #28048d; 
   text-decoration: none;
   font-family: 'Montserrat';
   font-size: 20px;
@@ -43,7 +43,7 @@
 }
 
 .loaderIcon {
-  /* margin-top: 2px; */
+  margin-top: 2px;
   animation: spin 2s infinite linear;
 }
 

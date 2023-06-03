@@ -40,7 +40,7 @@ export default function TweetCard({ card }) {
       ></img>
       <div className={css.cardLine}></div>
       <img src={logo} alt="logo GoIT" className={css.cardLogo} />
-      <img src={picture} alt="backgroung_image" className={css.cardPicture} />
+      <img src={picture} alt="background_image" className={css.cardPicture} />
       <p className={css.cardTweets}>{Number(card.tweets).toLocaleString('en')} Tweets</p>
       <p className={css.cardFollowers}>{Number(followers).toLocaleString('en')} Followers</p>
       <button
