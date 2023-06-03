@@ -1,10 +1,11 @@
 import TweetCard from '../../components/TweetCard/TweetCard';
 import { useEffect, useState } from 'react';
-import apiService from '../../services/apiService';
+import { apiServiceFetch } from '../../services/apiService';
 import css from './Tweets.module.css';
 import { NavLink } from 'react-router-dom';
 import { HiArrowLeft } from 'react-icons/hi';
 import Dropdown from '../../components/Dropdown/Dropdown';
+import Empty from 'components/Empty/Empty';
 
 export default function Tweets() {
   const [users, setUsers] = useState([]);
@@ -18,7 +19,7 @@ export default function Tweets() {
   useEffect(() => {
     async function fetchUsers() {
       try {
-        const data = await apiService();
+        const data = await apiServiceFetch();
         setUsers(data);
         setVisibilityUsers(data);
       } catch (error) {
@@ -31,7 +32,7 @@ export default function Tweets() {
   }, []);
 
   const showMoreItems = () => {
-    setVisible((prevValue) => prevValue + 3);
+    setVisible(prevValue => prevValue + 3);
   };
 
   const showAll = () => {
@@ -40,17 +41,17 @@ export default function Tweets() {
 
   const showFollow = () => {
     const following = JSON.parse(localStorage.getItem('following')) || [];
-    const idFollowing = (id) => following.includes(id);
-    setVisibilityUsers(users.filter((item) => !idFollowing(item.id)));
+    const idFollowing = id => following.includes(id);
+    setVisibilityUsers(users.filter(item => !idFollowing(item.id)));
   };
 
   const showFollowing = () => {
     const following = JSON.parse(localStorage.getItem('following')) || [];
-    const idFollowing = (id) => following.includes(id);
-    setVisibilityUsers(users.filter((item) => idFollowing(item.id)));
+    const idFollowing = id => following.includes(id);
+    setVisibilityUsers(users.filter(item => idFollowing(item.id)));
   };
 
-  const showType = (type) => {
+  const showType = type => {
     switch (type) {
       case 'All':
         showAll();
@@ -76,7 +77,10 @@ export default function Tweets() {
       {!error && (
         <div className={css.tweetsMenu}>
           <button className={css.buttonBack} type="button">
-            <NavLink className={(navData) => (navData.isActive ? css.active : css.link)} to="/">
+            <NavLink
+              className={navData => (navData.isActive ? css.active : css.link)}
+              to="/"
+            >
               <HiArrowLeft size="24" />
               <span className={css.buttonSpan}>Back</span>
             </NavLink>
@@ -86,23 +90,35 @@ export default function Tweets() {
       )}
 
       <ul className={css.cards}>
-        {visibilityUsers?.slice(0, visible).map((card) => (
+        {visibilityUsers?.slice(0, visible).map(card => (
           <li key={card.id}>
-            <TweetCard card={card} showAll={showAll}/>
+            <TweetCard card={card} showAll={showAll} />
           </li>
         ))}
       </ul>
 
       {visible < visibilityUsers.length && visibilityUsers.length > 0 && (
-        <button className={css.buttonLoadmore} type="button" onClick={showMoreItems}>
+        <button
+          className={css.buttonLoadmore}
+          type="button"
+          onClick={showMoreItems}
+        >
           Load more
         </button>
+      )}
+
+      {!error && visibilityUsers.length === 0 && (
+        <div>
+          <h1 className={css.text}>There are no following cards.</h1>
+          <Empty />
+        </div>
       )}
 
       {error && (
         <div className={css.error}>
           <p>Ooops, something went wrong: {error.message}.</p>
           <p>Please try again.</p>
+          <Empty/>
         </div>
       )}
     </div>
