@@ -1,11 +1,11 @@
-import TweetCard from '../../components/TweetCard/TweetCard';
+import TweetCard from 'components/TweetCard/TweetCard';
 import { useEffect, useState } from 'react';
-import { apiServiceFetch } from '../../services/apiService';
+import { apiServiceFetch } from 'services/apiService';
 import css from './Tweets.module.css';
 import { NavLink } from 'react-router-dom';
 import { HiArrowLeft } from 'react-icons/hi';
-import Dropdown from '../../components/Dropdown/Dropdown';
-import Empty from 'components/Empty/Empty';
+import Dropdown from 'components/Dropdown/Dropdown';
+import DefaultImage from 'components/DefaultImage/DefaultImage';
 
 export default function Tweets() {
   const [users, setUsers] = useState([]);
@@ -110,7 +110,7 @@ export default function Tweets() {
       {!error && visibilityUsers.length === 0 && (
         <div>
           <h1 className={css.text}>There are no following cards.</h1>
-          <Empty />
+          <DefaultImage />
         </div>
       )}
 
@@ -118,7 +118,7 @@ export default function Tweets() {
         <div className={css.error}>
           <p>Ooops, something went wrong: {error.message}.</p>
           <p>Please try again.</p>
-          <Empty/>
+          <DefaultImage/>
         </div>
       )}
     </div>

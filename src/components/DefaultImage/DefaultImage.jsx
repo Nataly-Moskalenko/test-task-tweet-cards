@@ -1,8 +1,8 @@
-import logo from '../../images/logo.svg';
-import picture from '../../images/picture.svg';
-import css from './Empty.module.css';
+import logo from 'images/logo.svg';
+import picture from 'images/picture.svg';
+import css from './DefaultImage.module.css';
 
-export default function Empty() {
+export default function DefaultImage() {
   return (
     <div className={css.empty}>
       <img src={logo} alt="logo GoIT" />

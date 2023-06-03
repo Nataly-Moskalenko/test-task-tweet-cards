@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import css from './TweetCard.module.css';
-import logo from '../../images/logo.svg';
-import picture from '../../images/picture.svg';
+import logo from 'images/logo.svg';
+import picture from 'images/picture.svg';
 import { apiServiceUpdate } from 'services/apiService';
 import PropTypes from 'prop-types';
 
@@ -83,5 +83,6 @@ TweetCard.propTypes = {
     avatar: PropTypes.string.isRequired,
     followers: PropTypes.number.isRequired,
     tweets: PropTypes.number.isRequired,
+    user: PropTypes.string.isRequired,
   }),
 };

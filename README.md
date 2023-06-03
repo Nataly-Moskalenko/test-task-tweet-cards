@@ -10,9 +10,9 @@ filter by the user's subscription status.
 Each item in the list is presented as a card that includes an avatar, number of
 tweets and followers, and a subscribe/unsubscribe button.
 
-The app allows you to download more maps with a single click of a button.
+The project allows you to download more cards with a single click of a button "LOAD MORE".
 
-In general, the program provides a convenient interface for viewing cards with
+In general, the project provides a convenient interface for viewing cards with
 the ability to filter and manage subscriptions.
 
 <div align="center">
