@@ -92,7 +92,7 @@ export default function Tweets() {
       <ul className={css.cards}>
         {visibilityUsers?.slice(0, visible).map(card => (
           <li key={card.id}>
-            <TweetCard card={card} showAll={showAll} />
+            <TweetCard card={card}/>
           </li>
         ))}
       </ul>

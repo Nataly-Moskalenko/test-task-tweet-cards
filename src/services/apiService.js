@@ -8,7 +8,6 @@ export const apiServiceFetch = async () => {
 };
 
 export const apiServiceUpdate = async (id, followers) => {
-  const response = await axios.put(`${BASE_URL}/users/${id}`, followers);
-  console.log(response);
+  const response = await axios.put(`${BASE_URL}/users/${id}`, followers); 
   return response.data;
 };

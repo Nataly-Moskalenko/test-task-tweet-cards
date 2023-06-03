@@ -3,6 +3,7 @@ import css from './TweetCard.module.css';
 import logo from '../../images/logo.svg';
 import picture from '../../images/picture.svg';
 import { apiServiceUpdate } from 'services/apiService';
+import PropTypes from 'prop-types';
 
 export default function TweetCard({ card }) {
   const following = JSON.parse(localStorage.getItem('following')) || [];
@@ -10,28 +11,28 @@ export default function TweetCard({ card }) {
   const [buttonText, setButtonText] = useState(
     following.includes(card.id) ? 'Following' : 'Follow'
   );
-  
+
   const [followers, setFollowers] = useState(card.followers);
 
   async function updateUsers(id, followers) {
     try {
-      const data = await apiServiceUpdate(id, followers);     
-      return data;      
-    } catch (error) {      
+      const data = await apiServiceUpdate(id, followers);
+      return data;
+    } catch (error) {
       console.log(error);
     }
   }
 
   const handleFollow = () => {
     const allFollowing = JSON.parse(localStorage.getItem('following')) || [];
-    if (buttonText === 'Follow') {      
+    if (buttonText === 'Follow') {
       updateUsers(card.id, { followers: followers + 1 });
       setFollowers(followers + 1);
       setButtonText('Following');
       allFollowing.push(card.id);
       window.localStorage.setItem('following', JSON.stringify(allFollowing));
     }
-    if (buttonText === 'Following') {     
+    if (buttonText === 'Following') {
       updateUsers(card.id, { followers: followers - 1 });
       setFollowers(followers - 1);
       setButtonText('Follow');
@@ -75,3 +76,12 @@ export default function TweetCard({ card }) {
     </div>
   );
 }
+
+TweetCard.propTypes = {
+  card: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    avatar: PropTypes.string.isRequired,
+    followers: PropTypes.number.isRequired,
+    tweets: PropTypes.number.isRequired,
+  }),
+};
