@@ -5,7 +5,7 @@ import picture from 'images/picture.svg';
 import { apiServiceUpdate } from 'services/apiService';
 import PropTypes from 'prop-types';
 
-export default function TweetCard({ card }) {
+export default function TweetCard({ card, showType }) {
   const following = JSON.parse(localStorage.getItem('following')) || [];
 
   const [buttonText, setButtonText] = useState(
@@ -42,6 +42,7 @@ export default function TweetCard({ card }) {
         JSON.stringify(removedFollowing)
       );
     }
+    showType();
   };
 
   return (
@@ -52,7 +53,7 @@ export default function TweetCard({ card }) {
         width="80"
         height="80"
         className={css.cardAvatar}
-      ></img>
+      />
       <div className={css.cardLine}></div>
       <img src={logo} alt="logo GoIT" className={css.cardLogo} />
       <img src={picture} alt="background_image" className={css.cardPicture} />

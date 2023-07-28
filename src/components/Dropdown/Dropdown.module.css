@@ -25,17 +25,21 @@
   background-color: #5cd3a8;
 }
 
-.buttonDropdown[active="All"]:first-of-type {
+.buttonDropdown[active='All']:first-of-type {
   color: #373737;
   background-color: #5cd3a8;
 }
 
-.buttonDropdown[active="Following"]:last-of-type {
+.buttonDropdown[active='Following']:last-of-type {
   color: #373737;
   background-color: #5cd3a8;
 }
 
-.buttonDropdown[active="Follow"]:nth-of-type(2) {
+.buttonDropdown[active='Follow']:nth-of-type(2) {
   color: #373737;
   background-color: #5cd3a8;
+}
+
+.buttonDropdown:hover {
+  background-color: #b5f5dd;
 }

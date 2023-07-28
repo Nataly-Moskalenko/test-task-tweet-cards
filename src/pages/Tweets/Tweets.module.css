@@ -91,10 +91,15 @@
   margin: 0;
   padding: 0;
   text-align: center;
-  font-family: 'Montserrat'; 
+  font-family: 'Montserrat';
   font-weight: 700;
   font-size: 24px;
-  line-height: 28px;  
+  line-height: 28px;
   text-transform: uppercase;
   color: #28048d;
+}
+
+.buttonBack:hover,
+.buttonLoadmore:hover {
+  background-color: #b5f5dd;
 }

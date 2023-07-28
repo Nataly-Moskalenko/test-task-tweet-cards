@@ -92,7 +92,7 @@ export default function Tweets() {
       <ul className={css.cards}>
         {visibilityUsers?.slice(0, visible).map(card => (
           <li key={card.id}>
-            <TweetCard card={card}/>
+            <TweetCard card={card} showType={showType} />
           </li>
         ))}
       </ul>
@@ -118,7 +118,7 @@ export default function Tweets() {
         <div className={css.error}>
           <p>Ooops, something went wrong: {error.message}.</p>
           <p>Please try again.</p>
-          <DefaultImage/>
+          <DefaultImage />
         </div>
       )}
     </div>
